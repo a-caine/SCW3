@@ -10,17 +10,14 @@ public class fileHandler {
   private final String[] lines;
 
   public fileHandler(String filePath) {
-    StringBuilder fileData = null;
+    StringBuilder fileData = new StringBuilder();
     try {
 
       File file = new File(filePath);
       Scanner scanner = new Scanner(file);
       while (scanner.hasNextLine()) {
         fileData.append(scanner.nextLine());
-
       }
-
-      fileData = new StringBuilder(fileData.substring(4));
 
       System.out.println(fileData);
     } catch (FileNotFoundException ex) {
