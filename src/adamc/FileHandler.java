@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class fileHandler {
+public class FileHandler {
 
   private final String[] lines;
 
-  public fileHandler(String filePath) {
+  public FileHandler(String filePath) {
     StringBuilder fileData = new StringBuilder();
     try {
 
