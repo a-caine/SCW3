@@ -1,7 +1,5 @@
 package adamc;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 public class InstructionHandler {
@@ -70,14 +68,7 @@ public class InstructionHandler {
     }
 
     inst = inst.substring(startIndex);
-    // We are going to get data in the following format:
-    // incr X
-    // clear X
-    // decr X
-    // while X
-    // end
-    // From this, no matter what the data is, if we call string.split with space as our regex
-    // we will get our operator
+
     String operator = null;
     String operand = null;
     String[] parsedInst = inst.split(" ");
@@ -104,7 +95,7 @@ public class InstructionHandler {
     if (inst.getOperator().equals("end")) {
       // If we satisfy the while condition, simply loop, else:
       if (!varHandler.isZero(loopVariables.get(loopVariables.size() - 1))) {
-        // - 1 needed as instructions always decreased by 1, may change code we shall see
+
         setInstruction(loopInstructions.get(loopInstructions.size() - 1));
       } else {
         loopInstructions.remove(loopInstructions.size() - 1);
