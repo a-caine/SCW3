@@ -10,6 +10,8 @@ import java.util.Vector;
 public class InstructionHandler {
 
   private int instruction;
+  private boolean programRunning = true;
+  private boolean programFailed = false;
 
   private VarHandler varHandler;
   private final Vector<Integer> loopInstructions = new Vector<>();
@@ -26,19 +28,21 @@ public class InstructionHandler {
    * @param handler an instance of a FileHandler object so that we can request the raw lines of
    *                code as well as the total number of instructions.
    */
-  public void start(FileHandler handler) {
-    boolean programRunning = true;
+  public void start(StringHandler handler) {
+    programRunning = true;
+    programFailed = false;
     instruction = 0;
     Instruction currentInstruction;
     varHandler = new VarHandler();
 
     int finalInstruction = handler.getTotalLines();
+    int totalInstructions = 0;
 
     String data;
 
 
     while (programRunning) {
-      System.out.println("***** INSTRUCTION " + instruction + " *****");
+      console.printPriority("***** INSTRUCTION " + instruction + " *****");
 
       // Fetch instruction from fileHandler
       data = handler.getLine(instruction);
@@ -47,17 +51,22 @@ public class InstructionHandler {
       currentInstruction = decodeInstruction(data);
 
       // Output what operator we are using and what operand it is working on for user readability
-      System.out.println("Operator: " + currentInstruction.getOperator() + ", Operand: " + currentInstruction.getOperand());
+      console.printString("Operator: " + currentInstruction.getOperator() + ", Operand: " + currentInstruction.getOperand());
 
       // Send decoded instruction to variable manager (or loop if loop case)
       executeInstruction(currentInstruction);
 
       instruction++;
+      totalInstructions++;
 
       if (instruction + 1 > finalInstruction) {
         programRunning = false;
       }
     }
+    if (!programFailed) {
+      console.printSuccess("Program finished, total lines of code: " + finalInstruction + ", total instructions executed: " + totalInstructions);
+    }
+
   }
 
   /**
@@ -112,7 +121,10 @@ public class InstructionHandler {
   private void executeInstruction(Instruction inst) {
 
     if (inst.getOperator() == null) {
-      console.printError("No operand found", instruction);
+      console.printError("No operator found", instruction);
+      programRunning = false;
+      programFailed = true;
+      return;
     }
     // Special Instruction
     if (inst.getOperator().equals("end")) {
@@ -136,6 +148,9 @@ public class InstructionHandler {
     // Figure out variable
     if (inst.getOperand() == null) {
       console.printError("Expected variable name, found nothing", instruction);
+      programRunning = false;
+      programFailed = true;
+      return;
     }
     if (!varHandler.hasVariable(inst.getOperand())) {
       // If we do not have a variable then we need to create one
@@ -151,7 +166,12 @@ public class InstructionHandler {
         loopVariables.add(inst.getOperand());
         loopInstructions.add(instruction);
       }
-      default -> console.printError("No instruction found", instruction);
+      default -> {
+        console.printError("No instruction found", instruction);
+        programRunning = false;
+        programFailed = true;
+        return;
+      }
     }
 
     // Prints the value of our variable to the console
