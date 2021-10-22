@@ -150,7 +150,6 @@ public class InstructionHandler {
       console.printError("Expected variable name, found nothing", instruction);
       programRunning = false;
       programFailed = true;
-      return;
     }
     if (!varHandler.hasVariable(inst.getOperand())) {
       // If we do not have a variable then we need to create one
