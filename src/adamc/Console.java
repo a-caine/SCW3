@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 public class Console {
 
   /**
-   * Prints an error to the system terminal.
+   * Prints an error to the console.
    *
    * @param errorMessage the message to be printed.
    * @param line         the instruction that the error occurred on.
@@ -26,7 +26,7 @@ public class Console {
   }
 
   /**
-   * Prints a variables value to the system terminal
+   * Prints a variables value to the console.
    *
    * @param varName the name of the variable to be printed.
    * @param value   the value of the variable to be printed.
@@ -36,10 +36,20 @@ public class Console {
     Main.addToConsole(new Text("Value of " + varName + " = " + value + ", Instruction line " + line));
   }
 
+  /**
+   * Prints a simple string to the console.
+   *
+   * @param string the string to be printed to the console.
+   */
   public void printString(String string) {
     Main.addToConsole(new Text(string));
   }
 
+  /**
+   * Prints a message highlighted in green text to indicate success.
+   *
+   * @param successMessage the message we are sending to the console.
+   */
   public void printSuccess(String successMessage) {
     Text successText = new Text();
     successText.setText(successMessage);
@@ -49,6 +59,11 @@ public class Console {
     Main.addToConsole(successText);
   }
 
+  /**
+   * Prints a message highlighted in order to make it stand out from other messages to the console.
+   *
+   * @param message the message to be sent to the console.
+   */
   public void printPriority(String message) {
     Text text = new Text();
     text.setText(message);
@@ -58,4 +73,5 @@ public class Console {
 
     Main.addToConsole(text);
   }
+
 }
