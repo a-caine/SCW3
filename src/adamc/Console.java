@@ -1,7 +1,9 @@
 package adamc;
 
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
 
 /**
  * A simple class that allows our program to communicate with the terminal and print errors and
@@ -11,7 +13,9 @@ import javafx.scene.text.Text;
 public class Console {
 
   /**
+
    * Prints an error to the console.
+
    *
    * @param errorMessage the message to be printed.
    * @param line         the instruction that the error occurred on.

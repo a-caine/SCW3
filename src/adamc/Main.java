@@ -1,5 +1,6 @@
 package adamc;
 
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -27,6 +28,7 @@ public class Main extends Application {
 
   private static ListView<Text> console;
 
+
   /**
    * The main function, where our program starts, asks the user for a path to the file we want
    * to run, and executes on that file.
@@ -34,6 +36,7 @@ public class Main extends Application {
    * @param args The arguments that the user can pass through to our program from the command line.
    */
   public static void main(String[] args) {
+
     launch(args);
   }
 
@@ -202,5 +205,6 @@ public class Main extends Application {
         addToConsole(errorText);
       }
     }
+
   }
 }
