@@ -36,10 +36,10 @@ public class FileHandler {
       ex.printStackTrace();
     }
 
-    Vector<String> tempLines = new Vector<>();
 
     lines = fileData.toString().split(";");
   }
+
 
   /**
    * Returns a specific line (instruction) from the array of lines with the specified line num.
