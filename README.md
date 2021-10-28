@@ -1,6 +1,6 @@
-# SCW2
-Basic bare bones interpreter built for the second week of space cadets \
-Now complete with a GUI created with JavaFX
+# SCW3
+Enhanced bare bones interpreter built for the third week of space cadets \
+Gui created with JavaFX
 # GUI Examples
 ![GUI Overview](/images/overview.png)
 ![Commands](/images/commands.png)
