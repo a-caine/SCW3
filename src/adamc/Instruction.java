@@ -5,7 +5,8 @@ package adamc;
  */
 public class Instruction {
 
-  private final String operator, operand;
+  private final Condition condition;
+  private final Operator operator;
 
   /**
    * The constructor takes both the operator and operand and stores them privately.
@@ -13,26 +14,16 @@ public class Instruction {
    * @param operator the operator code of the instruction.
    * @param operand  the variable that we are performing the instruction on.
    */
-  public Instruction(String operator, String operand) {
-    this.operand = operand;
+  public Instruction(Condition conditon, Operator operator) {
+    this.condition = conditon;
     this.operator = operator;
   }
 
   /**
-   * A getter for the operator String.
-   *
-   * @return the operator String.
+   * Calls the getResult function on the condition stored in the instruction
    */
-  public String getOperator() {
-    return this.operator;
+  public void exectue() {
+    this.condition.getResult();
   }
-
-  /**
-   * A getter for the operand String.
-   *
-   * @return the operand String.
-   */
-  public String getOperand() {
-    return this.operand;
-  }
+  
 }
