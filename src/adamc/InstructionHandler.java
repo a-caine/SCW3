@@ -93,35 +93,6 @@ public class InstructionHandler {
    * @param inst The raw line of code (instruction) that we want to decode.
    * @return an Instruction formed of an operator and operand.
    */
-  private Instruction decodeInstruction(String inst) {
-    // Strip white space from lead of instruction
-    boolean foundStart = false;
-    int startIndex = 0;
-    while (!foundStart) {
-      if (inst.charAt(startIndex) == ' ') {
-        startIndex++;
-      } else {
-        foundStart = true;
-      }
-    }
-
-    inst = inst.substring(startIndex);
-
-    // Split the rest of the line into an operand and operator.
-    String operator = null;
-    String operand = null;
-    String[] parsedInst = inst.split(" ");
-    if (parsedInst.length > 0) {
-      operator = parsedInst[0];
-    }
-
-    // we can assume that the operand (or variable) will be second
-    if (parsedInst.length > 1) {
-      operand = parsedInst[1];
-    }
-
-    return new Instruction(operator, operand);
-  }
 
   /**
    * Takes the basic Instruction formed of an operator and operand and calls the correct methods

@@ -1,4 +1,4 @@
-package adamc;
+package adamc.conditions;
 /**
  * Abstract class that I will be using in order to allow the interpreter to parse
  * difficult conditional statements.
@@ -7,7 +7,9 @@ package adamc;
  */
 public abstract class Condition {
 
-    private final Condition before, after;
+
+
+    protected final Condition before, after;
 
     /**
      * Constructor for the condition, every condition needs to have two further conditions
@@ -27,6 +29,8 @@ public abstract class Condition {
      * @return the condition resulting from the condition's specific behaviour
      */
     public abstract Condition getResult();
+
+
 
 
 }

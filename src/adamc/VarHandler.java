@@ -66,6 +66,10 @@ public class VarHandler {
     return (variables.get(varName) == 0);
   }
 
+  public int getValue(String varName) {
+    return (variables.get(varName));
+  }
+
   /**
    * A simple method to allow the main instruction handler to print the value of a variable
    * to the console.

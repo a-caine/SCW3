@@ -23,7 +23,7 @@ public class Instruction {
    * Calls the getResult function on the condition stored in the instruction
    */
   public void exectue() {
-    this.condition.getResult();
+    //this.condition.getResult();
   }
   
 }

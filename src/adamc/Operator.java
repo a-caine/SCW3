@@ -1,14 +1,21 @@
 package adamc;
 
 public enum Operator {
-    SUM,
-    PRODUCT,
-    MINUS,
-    DIVIDE,
-    EQUAL,
-    GREATER,
-    LESSER,
-    GEQUAL,
-    LEQUAL,
-    ASSIGN
+    // Mathematical
+    SUM, // +
+    PRODUCT, // *
+    MINUS, // -
+    DIVIDE, // /
+    // Logical
+    EQUAL, // ==
+    NEQUAL, // !=
+    GREATER, // >
+    LESSER, // <
+    GEQUAL, // >=
+    LEQUAL, // <=
+    AND, // &&
+    OR, // ||
+    NOT, // !
+    // Assignment
+    ASSIGN // =
 }
